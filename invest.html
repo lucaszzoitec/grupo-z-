@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-INVEST | Grupo Z</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0f;color:#fff;font-family:Arial,sans-serif}
+header nav{display:flex;justify-content:space-between;padding:20px 5%;background:#0a0a0f;border-bottom:1px solid #1e1e2a;align-items:center;position:relative}
+.logo{font-weight:800;letter-spacing:2px}header ul{display:flex;list-style:none;gap:20px}header a{color:#A8A9AD;text-decoration:none}
+.menu-toggle{display:none;font-size:26px;cursor:pointer}
+.hero{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(5,5,10,0.6),rgba(5,5,10,0.85)),url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1600') center/cover}
+.ecossistema{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;padding:60px 40px}
+.card{position:relative;height:360px;border-radius:16px;overflow:hidden;border:1px solid #1e1e2a;background:#11111d;display:flex;align-items:flex-end;text-decoration:none;transition:0.4s}
+.card-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.75;transition:0.4s}
+.card:hover .card-bg{opacity:0.95;transform:scale(1.05)}.card:hover{transform:translateY(-6px);border-color:#00C98D}
+.card-content{position:relative;z-index:2;width:100%;padding:24px;background:linear-gradient(to top, rgba(0,0,0,0.85), transparent)}
+@media(max-width:900px){.menu-toggle{display:block}header ul{display:none;position:absolute;top:68px;left:0;width:100%;flex-direction:column;background:#0a0a0f;padding:20px;border-top:1px solid #222}header ul.active{display:flex}.ecossistema{grid-template-columns:1fr;padding:20px}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div><ul id="menu"><li><a href="index.html">Início</a></li><li><a href="tech.html">Z-TECH</a></li><li><a href="const.html">Z-CONST</a></li><li><a href="invest.html">Z-INVEST</a></li></ul></nav></header>
+<section class="hero"><h1>Z-INVEST</h1><span style="color:#A8A9AD;margin-top:8px">Investimentos Inteligentes e Imóveis</span></section>
+<section class="ecossistema">
+<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800')"></div><div class="card-content"><h3>Leilão de Imóveis</h3><p>Oportunidades abaixo do mercado.</p><span>Ver →</span></div></a>
+<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800')"></div><div class="card-content"><h3>Consultoria</h3><p>Análise e valorização patrimonial.</p><span>Ver →</span></div></a>
+<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800')"></div><div class="card-content"><h3>Gestão</h3><p>Administração completa do seu investimento.</p><span>Ver →</span></div></a>
+</section>
+<script>document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})</script>
+</body>
+</html>

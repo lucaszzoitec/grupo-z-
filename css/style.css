@@ -1,0 +1,39 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#fff;font-family:Arial,sans-serif}
+header nav{display:flex;justify-content:space-between;padding:20px 5%;background:#0a0a0f;border-bottom:1px solid #1e1e2a;align-items:center;position:relative}
+.logo{font-weight:800;letter-spacing:2px;color:#fff}
+header ul{display:flex;list-style:none;gap:20px}
+header a{color:#A8A9AD;text-decoration:none}
+header a:hover{color:#fff}
+.menu-toggle{display:none;font-size:26px;cursor:pointer;color:#fff}
+
+.hero{height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(5,5,10,0.55),rgba(5,5,10,0.9)),url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=1600') center/cover}
+.hero .btn{border:1px solid #fff;padding:12px 24px;margin-top:20px;display:inline-block;color:#fff;text-decoration:none;border-radius:8px}
+
+.ecossistema{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;padding:60px 40px}
+.card{position:relative;height:380px;border-radius:18px;overflow:hidden;border:1px solid #1e1e2a;background:#11111d;display:flex;align-items:flex-end;text-decoration:none;transition:0.4s}
+.card-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.75;transition:0.4s}
+.card:hover .card-bg{opacity:0.95;transform:scale(1.06)}
+.card:hover{transform:translateY(-6px)}
+
+/* LETRA BRANCA - corrige o roxo da sua print */
+.card-content{position:relative;z-index:2;width:100%;padding:24px;background:linear-gradient(to top, rgba(0,0,0,0.85), transparent)}
+.card-content h3{font-size:20px;margin-bottom:6px;color:#fff !important}
+.card-content p{font-size:13px;color:#fff !important}
+.card-content span{font-size:12px;color:#fff !important;opacity:0.8}
+
+/* COR DE FUNDO REFERENTE A CADA ÁREA NO HOVER */
+.card-tech:hover{border-color:#0066FF;box-shadow:0 0 25px rgba(0,102,255,0.4)}
+.card-invest:hover{border-color:#00C98D;box-shadow:0 0 25px rgba(0,201,141,0.4)}
+.card-const:hover{border-color:#FFAA00;box-shadow:0 0 25px rgba(255,170,0,0.4)}
+
+.card-tech .card-bg{background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800')}
+.card-invest .card-bg{background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800')}
+.card-const .card-bg{background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800')}
+
+@media(max-width:900px){
+  .menu-toggle{display:block}
+  header ul{display:none;position:absolute;top:68px;left:0;width:100%;flex-direction:column;background:#0a0a0f;padding:20px;border-top:1px solid #222;z-index:10}
+  header ul.active{display:flex}
+  .ecossistema{grid-template-columns:1fr;padding:20px}
+}
