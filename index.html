@@ -4,15 +4,88 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grupo Z | Ecossistema</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+html{scroll-behavior:smooth}
+#empresas-ideias{padding:100px 5%;background:#0a0a0f}
+.bloco-empresa{display:flex;align-items:center;gap:60px;margin-bottom:120px}
+.bloco-empresa .foto{flex:1;height:450px;border-radius:20px;background-size:cover;background-position:center;border:1px solid #1e1e2a;position:relative;overflow:hidden}
+.bloco-empresa .foto::after{content:'';position:absolute;inset:0;border-radius:20px}
+/* FOTO NA ESQUERDA - some para a direita (lado do texto) */
+.fade-right::after{background:linear-gradient(to right, transparent 30%, #0a0a0f 100%)}
+/* FOTO NA DIREITA - some para a esquerda (lado do texto) */
+.fade-left::after{background:linear-gradient(to left, transparent 30%, #0a0a0f 100%)}
+.bloco-empresa .texto{flex:1}
+.bloco-empresa .texto span{color:#A8A9AD;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+.bloco-empresa .texto h2{font-size:40px;margin:15px 0;color:#fff}
+.bloco-empresa .texto p{color:#A8A9AD;line-height:1.7;font-size:16px;margin-bottom:25px}
+.btn-tech{padding:12px 26px;background:#0066FF;color:#fff;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
+.btn-invest{padding:12px 26px;background:#00C98D;color:#000;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
+.btn-const{padding:12px 26px;background:#FFAA00;color:#000;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
+@media(max-width:900px){
+.bloco-empresa{flex-direction:column !important;gap:30px}
+.bloco-empresa .foto{width:100%;height:320px}
+.fade-right::after,.fade-left::after{background:linear-gradient(to top, #0a0a0f 5%, transparent 60%)}
+}
+</style>
 </head>
 <body>
-<header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div><ul id="menu"><li><a href="index.html">Início</a></li><li><a href="tech.html">Z-TECH</a></li><li><a href="const.html">Z-CONST</a></li><li><a href="invest.html">Z-INVEST</a></li></ul></nav></header>
-<section class="hero"><h1 style="font-size:50px;">GRUPO Z</h1><span style="font-size:22px;color:#A8A9AD;">Ecossistema de Negócios</span><a href="#ecossistema" class="btn">Conheça as empresas</a></section>
+<header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div>
+<ul id="menu">
+<li><a href="index.html">Início</a></li>
+<li><a href="tech.html">Z-TECH</a></li>
+<li><a href="invest.html">Z-INVEST</a></li>
+<li><a href="const.html">Z-CONST</a></li>
+</ul></nav></header>
+
+<section class="hero">
+<h1 style="font-size:50px;">GRUPO Z</h1>
+<span style="font-size:22px;color:#A8A9AD;">Ecossistema de Negócios</span>
+<a href="#empresas-ideias" class="btn">Conheça nossas empresas</a>
+</section>
+
 <section class="ecossistema" id="ecossistema">
 <a href="tech.html" class="card card-tech"><div class="card-bg"></div><div class="card-content"><h3>Z-TECH</h3><p>Tecnologia que escala negócios.</p><span>Acessar →</span></div></a>
 <a href="invest.html" class="card card-invest"><div class="card-bg"></div><div class="card-content"><h3>Z-INVEST</h3><p>Capital inteligente que multiplica.</p><span>Acessar →</span></div></a>
 <a href="const.html" class="card card-const"><div class="card-bg"></div><div class="card-content"><h3>Z-CONST</h3><p>Obras que se tornam legado.</p><span>Acessar →</span></div></a>
 </section>
+
+<section id="empresas-ideias">
+
+  <!-- TECH - Foto esquerda / Texto direita = some pra direita -->
+  <div class="bloco-empresa">
+    <div class="foto fade-right" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000')"></div>
+    <div class="texto">
+      <span>01 — Z-TECH</span>
+      <h2>Tecnologia que escala</h2>
+      <p>Infraestrutura de servidores, desenvolvimento de sites e sistemas sob medida e suporte 24/7. Criamos a base tecnológica para sua empresa crescer sem travar.</p>
+      <a href="tech.html" class="btn-tech">Conhecer Z-TECH →</a>
+    </div>
+  </div>
+
+  <!-- INVEST - Texto esquerda / Foto direita = some pra esquerda -->
+  <div class="bloco-empresa" style="flex-direction:row-reverse">
+    <div class="foto fade-left" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000')"></div>
+    <div class="texto">
+      <span>02 — Z-INVEST</span>
+      <h2>Capital inteligente</h2>
+      <p>Encontramos imóveis em leilão até 50% abaixo do mercado, fazemos consultoria patrimonial e gestão completa para multiplicar seu patrimônio com segurança.</p>
+      <a href="invest.html" class="btn-invest">Conhecer Z-INVEST →</a>
+    </div>
+  </div>
+
+  <!-- CONST - Foto esquerda / Texto direita = some pra direita -->
+  <div class="bloco-empresa">
+    <div class="foto fade-right" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000')"></div>
+    <div class="texto">
+      <span>03 — Z-CONST</span>
+      <h2>Obras que viram legado</h2>
+      <p>Reformas, construções do zero e projetos 3D de alto padrão. Entrega no prazo, acabamento premium e transparência total na sua obra.</p>
+      <a href="const.html" class="btn-const">Conhecer Z-CONST →</a>
+    </div>
+  </div>
+
+</section>
+
 <script>document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})</script>
 </body>
 </html>

@@ -19,12 +19,25 @@ header nav{display:flex;justify-content:space-between;padding:20px 5%;background
 </style>
 </head>
 <body>
-<header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div><ul id="menu"><li><a href="index.html">Início</a></li><li><a href="tech.html">Z-TECH</a></li><li><a href="const.html">Z-CONST</a></li><li><a href="invest.html">Z-INVEST</a></li></ul></nav></header>
+<header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div><ul id="menu"><li><a href="index.html">Início</a></li><li><a href="tech.html">Z-TECH</a></li><li><a href="invest.html">Z-INVEST</a></li><li><a href="const.html">Z-CONST</a></li></ul></nav></header>
 <section class="hero"><h1>Z-TECH</h1><span style="color:#A8A9AD;margin-top:8px">Soluções em Tecnologia</span></section>
 <section class="ecossistema">
-<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800')"></div><div class="card-content"><h3>Infraestrutura</h3><p>Servidores e nuvem de alta performance.</p><span>Ver →</span></div></a>
-<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800')"></div><div class="card-content"><h3>Desenvolvimento</h3><p>Sites e sistemas sob medida.</p><span>Ver →</span></div></a>
-<a class="card"><div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800')"></div><div class="card-content"><h3>Suporte</h3><p>Monitoramento 24/7.</p><span>Ver →</span></div></a>
+
+<a class="card" href="tech/infraestrutura.html">
+<div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800')"></div>
+<div class="card-content"><h3>Infraestrutura</h3><p>Servidores e nuvem de alta performance.</p><span>Ver →</span></div>
+</a>
+
+<a class="card" href="tech/desenvolvimento.html">
+<div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800')"></div>
+<div class="card-content"><h3>Desenvolvimento</h3><p>Sites e sistemas sob medida.</p><span>Ver →</span></div>
+</a>
+
+<a class="card" href="tech/suporte.html">
+<div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800')"></div>
+<div class="card-content"><h3>Suporte</h3><p>Monitoramento 24/7.</p><span>Ver →</span></div>
+</a>
+
 </section>
 <script>document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})</script>
 </body>
