@@ -5,39 +5,64 @@
 <title>Grupo Z | Ecossistema</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-html{scroll-behavior:smooth}
-/* TRANSIÇÃO DE PÁGINA */
-#page-transition{position:fixed;inset:0;background:#0a0a0f;z-index:99999;transform:translateY(100%);transition:transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);pointer-events:none}
-#page-transition.active{transform:translateY(0);pointer-events:all}
-@keyframes pageEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-body.page-enter{animation:pageEnter 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards}
+html{scroll-behavior:smooth; overflow-x:hidden}
+body{overflow-x:hidden !important; height:auto !important; min-height:100vh !important; background:#0a0a0f !important; margin:0}
+header a, header a:visited, header a:link{color:#A8A9AD !important; text-decoration:none !important}
+header a:hover{color:#fff !important}
 
-#empresas-ideias{padding:100px 5%;background:#0a0a0f;overflow:hidden}
-.bloco-empresa{display:flex;align-items:center;gap:60px;margin-bottom:120px;opacity:0;transform:translateY(60px);transition:all 0.9s cubic-bezier(0.16, 1, 0.3, 1)}
-.bloco-empresa.visible{opacity:1;transform:translateY(0)}
-.bloco-empresa .foto{flex:1;height:450px;border-radius:20px;background-size:cover;background-position:center;border:1px solid #1e1e2a;position:relative;overflow:hidden}
-.bloco-empresa .foto::after{content:'';position:absolute;inset:0;border-radius:20px}
-.fade-right::after{background:linear-gradient(to right, transparent 30%, #0a0a0f 100%)}
-.fade-left::after{background:linear-gradient(to left, transparent 30%, #0a0a0f 100%)}
-.bloco-empresa .texto{flex:1}
-.bloco-empresa .texto span{color:#A8A9AD;font-size:12px;letter-spacing:3px;text-transform:uppercase;display:block;transform:translateY(20px);opacity:0;transition:all 0.6s ease 0.2s}
-.bloco-empresa .texto h2{font-size:40px;margin:15px 0;color:#fff;transform:translateY(20px);opacity:0;transition:all 0.6s ease 0.3s}
-.bloco-empresa .texto p{color:#A8A9AD;line-height:1.7;font-size:16px;margin-bottom:25px;transform:translateY(20px);opacity:0;transition:all 0.6s ease 0.4s}
-.bloco-empresa .texto a{transform:translateY(20px);opacity:0;transition:all 0.6s ease 0.5s}
-.bloco-empresa.visible .texto span,.bloco-empresa.visible .texto h2,.bloco-empresa.visible .texto p,.bloco-empresa.visible .texto a{transform:translateY(0);opacity:1}
-.btn-tech{padding:12px 26px;background:#0066FF;color:#fff;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
-.btn-invest{padding:12px 26px;background:#00C98D;color:#000;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
-.btn-const{padding:12px 26px;background:#FFAA00;color:#000;border-radius:30px;text-decoration:none;font-weight:700;display:inline-block}
+/* TRANSIÇÃO - FIX DO SCROLL FALSO */
+#page-transition{
+  position:fixed; inset:0;
+  width:100vw; height:100vh;
+  background:#0a0a0f;
+  z-index:99999;
+  transform:translateY(100%);
+  transition:transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+  display:none;
+  pointer-events:none;
+}
+#page-transition.active{
+  display:block;
+  transform:translateY(0);
+  pointer-events:all;
+}
+@keyframes pageEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+body.page-enter{animation:pageEnter 1.2s ease forwards}
+
+/* CORREÇÃO DOS CARDS CORTADOS */
+.hero{height:85vh !important; min-height:600px !important; display:flex !important; flex-direction:column !important; justify-content:center !important; align-items:center !important}
+.ecossistema{display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:25px !important; padding:60px 5% !important; height:auto !important; min-height:auto !important; overflow:visible !important}
+.card{height:380px !important; min-height:380px !important; position:relative !important; display:flex !important; overflow:hidden !important; border-radius:16px !important; text-decoration:none !important}
+.card:visited{color:#fff !important}
+.card-bg{position:absolute !important; inset:0 !important; height:100% !important; width:100% !important}
+.card-content{position:relative !important; z-index:2 !important; margin-top:auto !important}
+
+#empresas-ideias{padding:100px 5% !important; background:#0a0a0f !important; display:block !important; height:auto !important; overflow:visible !important}
+.bloco-empresa{display:flex !important; align-items:center !important; gap:60px !important; margin-bottom:120px !important; opacity:0; transform:translateY(60px); transition:all 0.9s cubic-bezier(0.16, 1, 0.3, 1)}
+.bloco-empresa.visible{opacity:1 !important; transform:translateY(0) !important}
+.bloco-empresa .foto{flex:1 !important; height:450px !important; min-height:450px !important; border-radius:20px; background-size:cover; background-position:center; border:1px solid #1e1e2a; position:relative; overflow:hidden}
+.bloco-empresa .foto::after{content:''; position:absolute; inset:0; border-radius:20px; pointer-events:none}
+.fade-right::after{background:linear-gradient(to right, transparent 50%, #0a0a0f 100%)}
+.fade-left::after{background:linear-gradient(to left, transparent 50%, #0a0a0f 100%)}
+.bloco-empresa .texto{flex:1 !important}
+.bloco-empresa .texto span{color:#A8A9AD; font-size:12px; letter-spacing:3px; text-transform:uppercase; display:block; transform:translateY(20px); opacity:0; transition:all 0.6s ease 0.2s}
+.bloco-empresa .texto h2{font-size:40px; margin:15px 0; color:#fff; transform:translateY(20px); opacity:0; transition:all 0.6s ease 0.3s}
+.bloco-empresa .texto p{color:#A8A9AD; line-height:1.7; font-size:16px; margin-bottom:25px; transform:translateY(20px); opacity:0; transition:all 0.6s ease 0.4s}
+.bloco-empresa .texto a{transform:translateY(20px); opacity:0; transition:all 0.6s ease 0.5s}
+.bloco-empresa.visible .texto span,.bloco-empresa.visible .texto h2,.bloco-empresa.visible .texto p,.bloco-empresa.visible .texto a{transform:translateY(0) !important; opacity:1 !important}
+.btn-tech{padding:12px 26px; background:#0066FF; color:#fff; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block}
+.btn-invest{padding:12px 26px; background:#00C98D; color:#000; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block}
+.btn-const{padding:12px 26px; background:#FFAA00; color:#000; border-radius:30px; text-decoration:none; font-weight:700; display:inline-block}
 @media(max-width:900px){
-.bloco-empresa{flex-direction:column !important;gap:30px}
-.bloco-empresa .foto{width:100%;height:320px}
-.fade-right::after,.fade-left::after{background:linear-gradient(to top, #0a0a0f 5%, transparent 60%)}
+.ecossistema{grid-template-columns:1fr !important}
+.bloco-empresa{flex-direction:column !important; gap:30px !important}
+.bloco-empresa .foto{width:100% !important; height:320px !important; min-height:320px !important}
+.fade-right::after,.fade-left::after{background:linear-gradient(to top, #0a0a0f 0%, transparent 60%)}
 }
 </style>
 </head>
 <body>
 <div id="page-transition"></div>
-
 <header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div>
 <ul id="menu">
 <li><a href="index.html">Início</a></li>
@@ -45,19 +70,16 @@ body.page-enter{animation:pageEnter 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards
 <li><a href="invest.html">Z-INVEST</a></li>
 <li><a href="const.html">Z-CONST</a></li>
 </ul></nav></header>
-
 <section class="hero">
 <h1 style="font-size:50px;">GRUPO Z</h1>
 <span style="font-size:22px;color:#A8A9AD;">Ecossistema de Negócios</span>
 <a href="#empresas-ideias" class="btn">Conheça nossas empresas</a>
 </section>
-
 <section class="ecossistema" id="ecossistema">
 <a href="tech.html" class="card card-tech"><div class="card-bg"></div><div class="card-content"><h3>Z-TECH</h3><p>Tecnologia que escala negócios.</p><span>Acessar →</span></div></a>
 <a href="invest.html" class="card card-invest"><div class="card-bg"></div><div class="card-content"><h3>Z-INVEST</h3><p>Capital inteligente que multiplica.</p><span>Acessar →</span></div></a>
 <a href="const.html" class="card card-const"><div class="card-bg"></div><div class="card-content"><h3>Z-CONST</h3><p>Obras que se tornam legado.</p><span>Acessar →</span></div></a>
 </section>
-
 <section id="empresas-ideias">
   <div class="bloco-empresa">
     <div class="foto fade-right" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000')"></div>
@@ -87,33 +109,32 @@ body.page-enter{animation:pageEnter 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards
     </div>
   </div>
 </section>
-
 <script>
 document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})
-
-// ANIMAÇÃO AO ROLAR
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.classList.add('visible') }
-  })
-},{threshold:0.2})
+const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible') } }) },{threshold:0.2})
 document.querySelectorAll('.bloco-empresa').forEach(el=>observer.observe(el))
 
-// TRANSIÇÃO DE PÁGINA
 document.body.classList.add('page-enter')
 const transition = document.getElementById('page-transition')
+
 document.querySelectorAll('a[href$=".html"]').forEach(link=>{
   link.addEventListener('click',e=>{
     const href = link.getAttribute('href')
     if(href.startsWith('#')) return
     if(link.hostname === window.location.hostname){
       e.preventDefault()
+      transition.style.display='block'
+      void transition.offsetWidth
       transition.classList.add('active')
-      setTimeout(()=>{ window.location.href = href }, 700)
+      setTimeout(()=>{ window.location.href = href }, 1200)
     }
   })
 })
-window.addEventListener('pageshow',()=>{ transition.classList.remove('active') })
+
+window.addEventListener('pageshow',()=>{
+  transition.classList.remove('active')
+  setTimeout(()=>{ transition.style.display='none' }, 1300)
+})
 </script>
 </body>
 </html>
