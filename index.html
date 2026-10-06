@@ -6,6 +6,12 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 html{scroll-behavior:smooth}
+/* TRANSIÇÃO DE PÁGINA */
+#page-transition{position:fixed;inset:0;background:#0a0a0f;z-index:99999;transform:translateY(100%);transition:transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);pointer-events:none}
+#page-transition.active{transform:translateY(0);pointer-events:all}
+@keyframes pageEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+body.page-enter{animation:pageEnter 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards}
+
 #empresas-ideias{padding:100px 5%;background:#0a0a0f;overflow:hidden}
 .bloco-empresa{display:flex;align-items:center;gap:60px;margin-bottom:120px;opacity:0;transform:translateY(60px);transition:all 0.9s cubic-bezier(0.16, 1, 0.3, 1)}
 .bloco-empresa.visible{opacity:1;transform:translateY(0)}
@@ -30,6 +36,8 @@ html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
+<div id="page-transition"></div>
+
 <header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div>
 <ul id="menu">
 <li><a href="index.html">Início</a></li>
@@ -51,7 +59,6 @@ html{scroll-behavior:smooth}
 </section>
 
 <section id="empresas-ideias">
-
   <div class="bloco-empresa">
     <div class="foto fade-right" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000')"></div>
     <div class="texto">
@@ -61,7 +68,6 @@ html{scroll-behavior:smooth}
       <a href="tech.html" class="btn-tech">Conhecer Z-TECH →</a>
     </div>
   </div>
-
   <div class="bloco-empresa" style="flex-direction:row-reverse">
     <div class="foto fade-left" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000')"></div>
     <div class="texto">
@@ -71,7 +77,6 @@ html{scroll-behavior:smooth}
       <a href="invest.html" class="btn-invest">Conhecer Z-INVEST →</a>
     </div>
   </div>
-
   <div class="bloco-empresa">
     <div class="foto fade-right" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000')"></div>
     <div class="texto">
@@ -81,7 +86,6 @@ html{scroll-behavior:smooth}
       <a href="const.html" class="btn-const">Conhecer Z-CONST →</a>
     </div>
   </div>
-
 </section>
 
 <script>
@@ -90,13 +94,26 @@ document.getElementById('menu-toggle').addEventListener('click',()=>{document.ge
 // ANIMAÇÃO AO ROLAR
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible')
-    }
+    if(entry.isIntersecting){ entry.target.classList.add('visible') }
   })
 },{threshold:0.2})
-
 document.querySelectorAll('.bloco-empresa').forEach(el=>observer.observe(el))
+
+// TRANSIÇÃO DE PÁGINA
+document.body.classList.add('page-enter')
+const transition = document.getElementById('page-transition')
+document.querySelectorAll('a[href$=".html"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const href = link.getAttribute('href')
+    if(href.startsWith('#')) return
+    if(link.hostname === window.location.hostname){
+      e.preventDefault()
+      transition.classList.add('active')
+      setTimeout(()=>{ window.location.href = href }, 700)
+    }
+  })
+})
+window.addEventListener('pageshow',()=>{ transition.classList.remove('active') })
 </script>
 </body>
 </html>

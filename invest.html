@@ -16,29 +16,48 @@ header nav{display:flex;justify-content:space-between;padding:20px 5%;background
 .card-content{position:relative;z-index:2;width:100%;padding:24px;background:linear-gradient(to top, rgba(0,0,0,0.85), transparent)}
 .card-content h3{color:#fff}.card-content p{color:#fff;font-size:12px}.card-content span{color:#fff;font-size:11px}
 @media(max-width:900px){.menu-toggle{display:block}header ul{display:none;position:absolute;top:68px;left:0;width:100%;flex-direction:column;background:#0a0a0f;padding:20px;border-top:1px solid #222}header ul.active{display:flex}.ecossistema{grid-template-columns:1fr;padding:20px}}
+/* TRANSIÇÃO DE PÁGINA */
+#page-transition{position:fixed;inset:0;background:#0a0a0f;z-index:99999;transform:translateY(100%);transition:transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);pointer-events:none}
+#page-transition.active{transform:translateY(0);pointer-events:all}
+@keyframes pageEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+body.page-enter{animation:pageEnter 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards}
 </style>
 </head>
 <body>
+<div id="page-transition"></div>
 <header><nav><div class="logo">GRUPO Z</div><div class="menu-toggle" id="menu-toggle">☰</div><ul id="menu"><li><a href="index.html">Início</a></li><li><a href="tech.html">Z-TECH</a></li><li><a href="invest.html">Z-INVEST</a></li><li><a href="const.html">Z-CONST</a></li></ul></nav></header>
 <section class="hero"><h1>Z-INVEST</h1><span style="color:#A8A9AD;margin-top:8px">Investimentos Inteligentes e Imóveis</span></section>
 <section class="ecossistema">
-
 <a class="card" href="invest/leilao.html">
 <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800')"></div>
 <div class="card-content"><h3>Leilão de Imóveis</h3><p>Oportunidades abaixo do mercado.</p><span>Ver →</span></div>
 </a>
-
 <a class="card" href="invest/consultoria.html">
 <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800')"></div>
 <div class="card-content"><h3>Consultoria</h3><p>Análise e valorização patrimonial.</p><span>Ver →</span></div>
 </a>
-
 <a class="card" href="invest/gestao.html">
 <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800')"></div>
 <div class="card-content"><h3>Gestão</h3><p>Administração completa do seu investimento.</p><span>Ver →</span></div>
 </a>
-
 </section>
-<script>document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})</script>
+<script>
+document.getElementById('menu-toggle').addEventListener('click',()=>{document.getElementById('menu').classList.toggle('active')})
+// TRANSIÇÃO
+document.body.classList.add('page-enter')
+const transition = document.getElementById('page-transition')
+document.querySelectorAll('a[href$=".html"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const href = link.getAttribute('href')
+    if(href.startsWith('#')) return
+    if(link.hostname === window.location.hostname){
+      e.preventDefault()
+      transition.classList.add('active')
+      setTimeout(()=>{ window.location.href = href }, 700)
+    }
+  })
+})
+window.addEventListener('pageshow',()=>{ transition.classList.remove('active') })
+</script>
 </body>
 </html>
